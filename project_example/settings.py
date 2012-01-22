@@ -124,7 +124,7 @@ INSTALLED_APPS = (
     'queryset_reporter',
     'basic.blog',
     'basic.inlines',
-    #'south'
+    'south'
 )
 
 # A sample logging configuration. The only tangible logging
