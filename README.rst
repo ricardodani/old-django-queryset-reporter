@@ -5,7 +5,7 @@ django-queryset-reporter - Uma ferramenta djangônica para relatório de queries
 A idéia principal
 ================
 
-* Na view onde a queryset é enviada para o ``QueryAnalytics`` .
+* Na view onde a queryset é enviada para o ``QuerysetReporter`` .
 * O queryAnalytics pega os valores da queryset usando ``.values()`` ou ``.values_list()``
 * O valueslist então vai possuir poder de todo o resultado em uma estrutura de dados, com todas as colunas que são interessantes.
 * Com isso ele vai gerar um resultado, exibindo também, talvez o sql gerado, o link do arquivo sem senha, quem gerou, o horario usando o Rogerio Reports, ou um gerador de .xls , .pdf, open office calc, etc.
@@ -18,8 +18,7 @@ Armazenamento do relatório.
 
 	Modelo:
 
-		Período debugável.
-			(Apenas esses no admin):
+		Período debugável:
 
 			Campos: id, inicia em, termina em, password (ou uuid), lista de arquivos, enviar_emails, emails_extras
 
