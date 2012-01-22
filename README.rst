@@ -30,3 +30,10 @@ Execução do relatório
 ==============
 
 * Atravéz de uma url GET com a senha do periodo debugável
+
+Observações importantes
+==============
+
+* Instalação:
+
+    - O ``basic.blog`` ao ser instalado no seu ambiente, não copia a pasta `templates` para a lib. Sendo assim, fiz um link simbólico na mão para esta pasta.

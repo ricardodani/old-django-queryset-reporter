@@ -14,6 +14,6 @@ class ArquivoAdmin(admin.ModelAdmin):
     list_display  = (
         'arquivo', 'periodo', 'gerado_em', 'gerado_por', 'enviado_por_email'
     )
-    list_filter = ('gerado_em')
+    list_filter = ('gerado_em',)
 admin.site.register(Arquivo, ArquivoAdmin)
 
