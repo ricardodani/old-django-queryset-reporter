@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+import uuid
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
@@ -35,7 +37,11 @@ class Periodo(models.Model):
     )
 
     def __unicode__(self):
-        return u'%s - %s' % (self.inicio, self.termino)
+        return u'# %d' % self.id
+
+    def save(self, *args, **kwargs):
+        self.senha = str(uuid.uuid4())[:8]
+        super(Periodo, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _(u'período debugável')

@@ -5,7 +5,7 @@ from queryset_reporter.models import Periodo, Arquivo
 
 
 class PeriodoAdmin(admin.ModelAdmin):
-    list_display  = ('inicio', 'termino', 'senha', 'enviar_email', 'ativo')
+    list_display  = ('__unicode__', 'inicio', 'termino', 'senha', 'enviar_email', 'ativo')
     list_filter = ('inicio', 'termino', 'enviar_email', 'ativo')
     search_field = ('emails_extra',)
 admin.site.register(Periodo, PeriodoAdmin)
