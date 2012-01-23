@@ -3,7 +3,4 @@
 from django.conf import settings
 
 # defina aqui um local apropriado para os arquivos serem baixados
-try:
-    REPORTER_FILES = settings.REPORTER_FILES
-except:
-    REPORTER_FILES = '/tmp/'
+REPORTER_FILES = getattr(settings, 'REPORTER_FILES', '/tmp')
