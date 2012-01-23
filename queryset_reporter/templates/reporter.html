@@ -1,0 +1,36 @@
+{% load getattribute %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>{{ title }} | QuerysetReporter</title>
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    </head>
+    <body>
+        <h1>{{ title }} | QuerysetReporter</h1>
+        {% if thead %}
+        <table class="condensed-table">
+            <thead>
+                <tr>
+                    {% for th in thead %}
+                    <th>{{ th }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for td in tbody %}
+                <tr>
+                    {% for th in thead %}
+                    <td>
+                    {% with td|getattribute:th as value %}
+                        {{ value|truncatewords:10 }}
+                    {% endwith%}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </body>
+</html>

@@ -22,7 +22,7 @@ class Periodo(models.Model):
     termino = models.DateTimeField(_(u'término'))
     
     # gera um uuid automaticamente para dara acesso ao arquivo de relatório
-    senha = models.CharField(_(u'senha'), editable=False, **_CHAR)
+    token = models.CharField(_(u'token'), editable=False, **_CHAR)
     
     # define se o relatório envia email's
     enviar_email = models.BooleanField(
@@ -40,7 +40,7 @@ class Periodo(models.Model):
         return u'# %d' % self.id
 
     def save(self, *args, **kwargs):
-        self.senha = str(uuid.uuid4())[:8]
+        self.token = str(uuid.uuid4())[:8]
         super(Periodo, self).save(*args, **kwargs)
 
     class Meta:
