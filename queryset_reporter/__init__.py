@@ -17,6 +17,15 @@ class QuerysetReporter(object):
         
         if self._requisicao_valida(request):
             messages.info(request, _(u'requisição de relatório válida'))
+
+            #self.values = queryset.values()
+            # TODO: primeira coisa a fazer, gerar HTML mesmo,
+            # substituir a saida no get_queryset()
+            #
+            # também abrir opção na API para setar a queryset um momento
+            # depois de inicializar o objeto. Ou simplesemnte criar um parametro callback
+            # que se setado, usa a queryset em questão caso falhe a senha.
+            #
     
     def _requisicao_valida(self, request):
         '''Método interno que verifica se a requisição é valida buscando

@@ -9,6 +9,7 @@ from queryset_reporter import QuerysetReporter
 def post_list(request, page=0, paginate_by=20, **kwargs):
     page_size = getattr(settings,'BLOG_PAGESIZE', paginate_by)
     
+    # para definir que uma queryset é reportável.
     qr = QuerysetReporter(Post.objects.published(), request)
     
     return list_detail.object_list(
