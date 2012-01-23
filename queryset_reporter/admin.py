@@ -11,10 +11,10 @@ class PeriodoAdmin(admin.ModelAdmin):
 admin.site.register(Periodo, PeriodoAdmin)
 
 class ArquivoAdmin(admin.ModelAdmin):
-    fields = ('arquivo',)
-    readonly_fields = ('arquivo',)
+    fields = ('arquivo', 'periodo', 'gerado_em', 'gerado_por', 'enviado_por_email')
+    readonly_fields = ('arquivo', 'periodo', 'gerado_em', 'gerado_por', 'enviado_por_email')
     list_display  = (
-        'arquivo', 'periodo', 'gerado_em', 'gerado_por', 'enviado_por_email'
+        '__unicode__', 'link_arquivo', 'periodo', 'gerado_em', 'gerado_por', 'enviado_por_email'
     )
     list_filter = ('gerado_em',)
 admin.site.register(Arquivo, ArquivoAdmin)

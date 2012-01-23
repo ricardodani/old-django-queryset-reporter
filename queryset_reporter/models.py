@@ -5,6 +5,7 @@ import uuid
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings as dj_settings
 
 from queryset_reporter import settings
 
@@ -37,7 +38,7 @@ class Periodo(models.Model):
     )
 
     def __unicode__(self):
-        return u'# %d' % self.id
+        return u'# %d - %s -> %s' % (self.id, self.inicio, self.termino)
 
     def save(self, *args, **kwargs):
         self.token = str(uuid.uuid4())[:8]
@@ -68,6 +69,17 @@ class Arquivo(models.Model):
     enviado_por_email = models.BooleanField(
         _(u'enviado por e-mail'), editable=False
     )
+
+    def __unicode__(self):
+        return u"# %s - %s" % (self.periodo.id, self.arquivo)
+
+    def link_arquivo(self):
+        return u"<a href=\"%(media_url)s%(arquivo)s\">%(media_url)s%(arquivo)s</a>" % {
+            'media_url': dj_settings.MEDIA_URL,
+            'arquivo': self.arquivo
+        }
+    link_arquivo.allow_tags = True
+    link_arquivo.short_description = "Link do arquivo"
 
     class Meta:
         verbose_name = _(u'arquivo de relatório')

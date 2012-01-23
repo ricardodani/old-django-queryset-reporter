@@ -72,7 +72,7 @@ class QuerysetReporter(object):
 
     def _cria_arquivo(self):
         self.filename = "%s_%s.html" % (self.token, str(uuid.uuid4())[:8])
-        path = "%s" % self.filename
+        path = "%s%s" % (REPORTER_FILES, self.filename)
 
         self.path = default_storage.save(
             path, ContentFile(self._renderiza_html().encode('utf-8'))
